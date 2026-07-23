@@ -56,7 +56,7 @@ export default function Sidebar({ activeTab, setActiveTab, approvalsCount, profi
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-lg bg-white/95 p-1.5 flex items-center justify-center shadow-lg shadow-slate-950/20">
             <img
-              src="/assets/Images/toughcons.png"
+              src="/public/assets/toughcons.png"
               alt="Toughcons Nirman"
               className="w-full h-full object-contain"
             />
