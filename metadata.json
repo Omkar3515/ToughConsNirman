@@ -1,0 +1,6 @@
+{
+  "name": "Toughcons Core",
+  "description": "An enterprise-grade redevelopment project management platform for planning, tracking, approvals, meetings, and snag tracking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
