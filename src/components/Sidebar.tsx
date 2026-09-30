@@ -52,13 +52,13 @@ export default function Sidebar({ activeTab, setActiveTab, approvalsCount, profi
   return (
     <aside id="sidebar" className="w-64 h-screen sticky top-0 bg-slate-900 text-slate-300 flex flex-col border-r border-slate-800 shrink-0 z-50">
       {/* Branding Header */}
-      <div className="p-8">
+      <div className="p-6 border-b border-slate-800/80">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-white/95 p-1.5 flex items-center justify-center shadow-lg shadow-slate-950/20">
+          <div className="h-10 px-2 rounded-lg bg-white p-1 flex items-center justify-center shadow-lg shadow-slate-950/20">
             <img
-              src="https://static.wixstatic.com/media/e2dd2f_2096f232713e4475b2d09b496e20c15b~mv2.png/v1/fill/w_136,h_86,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Toughcons%20Nirman%20-%20Logo.png"
-              alt="Toughcons Nirman"
-              className="w-full h-full object-contain"
+              src="/assets/ToughConsLogo.png"
+              alt="AAYAM Toughcons Nirman"
+              className="h-full w-auto object-contain"
             />
           </div>
           <div>
