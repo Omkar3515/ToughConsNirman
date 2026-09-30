@@ -52,19 +52,13 @@ export default function Sidebar({ activeTab, setActiveTab, approvalsCount, profi
   return (
     <aside id="sidebar" className="w-64 h-screen sticky top-0 bg-slate-900 text-slate-300 flex flex-col border-r border-slate-800 shrink-0 z-50">
       {/* Branding Header */}
-      <div className="p-6 border-b border-slate-800/80">
-        <div className="flex items-center gap-3">
-          <div className="h-10 px-2 rounded-lg bg-white p-1 flex items-center justify-center shadow-lg shadow-slate-950/20">
-            <img
-              src="/assets/ToughConsLogo.png"
-              alt="AAYAM Toughcons Nirman"
-              className="h-full w-auto object-contain"
-            />
-          </div>
-          <div>
-            <span className="text-white font-semibold text-base tracking-tight block">Toughcons</span>
-            <span className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Core OS</span>
-          </div>
+      <div className="p-5 border-b border-slate-800/80">
+        <div className="w-full bg-white rounded-xl p-3 flex items-center justify-center shadow-md shadow-slate-950/40">
+          <img
+            src="/assets/ToughConsLogo.png"
+            alt="AAYAM - Every Dimension. Connected."
+            className="w-full h-auto max-h-14 object-contain"
+          />
         </div>
       </div>
 
