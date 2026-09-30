@@ -958,7 +958,7 @@ Ajay Mehta (Chairman): Excellent, thank you all.`);
                 <div>
                   <h3 className="text-xs font-black text-slate-800 uppercase tracking-wider">Meeting Transcript / Speech-to-Text Raw</h3>
                   <p className="text-[11px] text-slate-500 mt-0.5">
-                    Toughcons speech-to-text diarization resolving distinct speaker voice signatures. Paste any rough notes or edit the simulated transcription below:
+                    Aayam speech-to-text diarization resolving distinct speaker voice signatures. Paste any rough notes or edit the simulated transcription below:
                   </p>
                 </div>
 

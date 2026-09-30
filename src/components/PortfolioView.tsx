@@ -13,7 +13,8 @@ import {
   MoreHorizontal, 
   X,
   AlertTriangle,
-  Minus
+  Minus,
+  Trash2
 } from 'lucide-react';
 import { Project, UserRole, AuditLog } from '../types';
 import ProjectDetailView from './ProjectDetailView';
@@ -24,6 +25,7 @@ interface PortfolioViewProps {
   activeProject: Project | null;
   onSelectProject: (project: Project) => void;
   onAddProject: (project: Omit<Project, 'id'>) => void;
+  onDeleteProject?: (id: string) => void;
   onExportCSV: () => void;
   showToast?: (message: string, type?: 'success' | 'info' | 'warning' | 'error') => void;
   currentRole: UserRole;
@@ -35,6 +37,7 @@ export default function PortfolioView({
   activeProject,
   onSelectProject,
   onAddProject,
+  onDeleteProject,
   onExportCSV,
   showToast,
   currentRole,
@@ -330,11 +333,27 @@ export default function PortfolioView({
                         Priority 1
                       </span>
                     </div>
-                    {isActiveWorkspace && (
-                      <span className="absolute top-4 right-4 bg-emerald-500 text-white px-2.5 py-1 text-[9px] font-bold rounded-lg shadow-sm">
-                        ACTIVE WORKSPACE
-                      </span>
-                    )}
+                    <div className="absolute top-4 right-4 flex items-center gap-2">
+                      {isActiveWorkspace && (
+                        <span className="bg-emerald-500 text-white px-2.5 py-1 text-[9px] font-bold rounded-lg shadow-sm">
+                          ACTIVE WORKSPACE
+                        </span>
+                      )}
+                      {onDeleteProject && (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            if (window.confirm(`Are you sure you want to remove project "${project.name}" from your portfolio?`)) {
+                              onDeleteProject(project.id);
+                            }
+                          }}
+                          className="bg-white/95 backdrop-blur-md hover:bg-red-600 hover:text-white text-slate-700 p-1.5 rounded-lg shadow-sm transition-all cursor-pointer"
+                          title="Remove Project"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      )}
+                    </div>
                   </div>
                 )}
 
@@ -356,7 +375,20 @@ export default function PortfolioView({
                             ACTIVE
                           </span>
                         )}
-                        <MoreHorizontal className="w-4 h-4 text-slate-400 group-hover:text-slate-600 transition-colors" />
+                        {onDeleteProject && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (window.confirm(`Are you sure you want to remove project "${project.name}" from your portfolio?`)) {
+                                onDeleteProject(project.id);
+                              }
+                            }}
+                            className="p-1 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition-colors cursor-pointer"
+                            title="Remove Project"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        )}
                       </div>
                     </div>
                   )}
@@ -543,16 +575,32 @@ export default function PortfolioView({
                     {project.progress}%
                   </td>
                   <td className="px-6 py-4 text-right">
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onSelectProject(project);
-                        setSelectedDetailProject(project);
-                      }}
-                      className="px-2.5 py-1.5 bg-blue-50 hover:bg-blue-600 hover:text-white text-blue-700 font-extrabold uppercase tracking-wider text-[9px] rounded-lg transition-all cursor-pointer"
-                    >
-                      View Detail
-                    </button>
+                    <div className="flex items-center justify-end gap-1.5">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onSelectProject(project);
+                          setSelectedDetailProject(project);
+                        }}
+                        className="px-2.5 py-1.5 bg-blue-50 hover:bg-blue-600 hover:text-white text-blue-700 font-extrabold uppercase tracking-wider text-[9px] rounded-lg transition-all cursor-pointer"
+                      >
+                        View Detail
+                      </button>
+                      {onDeleteProject && (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            if (window.confirm(`Are you sure you want to remove project "${project.name}"?`)) {
+                              onDeleteProject(project.id);
+                            }
+                          }}
+                          className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors cursor-pointer"
+                          title="Remove Project"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      )}
+                    </div>
                   </td>
                 </tr>
               ))}

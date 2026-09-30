@@ -106,7 +106,7 @@ export default function Header({
           </div>
         ) : (
           <div className="text-right hidden sm:block border-l border-slate-100 pl-4">
-            <p className="text-xs font-bold text-slate-900 leading-none">Toughcons Hub</p>
+            <p className="text-xs font-bold text-slate-900 leading-none">Aayam</p>
             <p className="text-[9px] text-slate-400 uppercase tracking-widest font-semibold mt-1">
               No Active Selection
             </p>

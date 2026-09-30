@@ -578,6 +578,25 @@ export default function App() {
     showToast(`"${fresh.name}" registered successfully to project portfolio stage database!`, 'success');
   };
 
+  const handleDeleteProject = (projectId: string) => {
+    const targetProject = projects.find(p => p.id === projectId);
+    const updatedProjects = projects.filter(p => p.id !== projectId);
+    setProjects(updatedProjects);
+    
+    if (activeProject?.id === projectId) {
+      setActiveProject(updatedProjects[0] || null);
+    }
+    
+    if (targetProject) {
+      handleLogAudit(
+        'DELETE',
+        'Project',
+        `Removed project card "${targetProject.name}" from workspace portfolio.`
+      );
+      showToast(`Project "${targetProject.name}" removed successfully.`, 'warning');
+    }
+  };
+
   const handleReviewAlert = (alertId: string) => {
     const target = alerts.find(a => a.id === alertId);
     if (target) {
@@ -797,6 +816,7 @@ export default function App() {
               activeProject={activeProject}
               onSelectProject={handleSelectProject}
               onAddProject={handleAddProject}
+              onDeleteProject={handleDeleteProject}
               onExportCSV={handleExportCSV}
               showToast={showToast}
               currentRole={currentRole}
